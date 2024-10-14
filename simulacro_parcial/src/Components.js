@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import {Navigate} from "react-router-dom";
 import { useLocation } from "react-router-dom"; 
 import { useParams } from "react-router-dom";   
+import Home from "./Home";
+import useJuegos from "./useJuegos";
 
-export const Card = ({ id, title, description, players, categories }) => {
+export const Card = ({ id, title, description, players, categories, onDelete }) => {
   const navigate = useNavigate();
   const HandleDeleteClick = async (event) => {
     event.preventDefault();
@@ -18,6 +20,8 @@ export const Card = ({ id, title, description, players, categories }) => {
       }
 
       console.log("Juego eliminado con éxito");
+      // const handleReload = window.location.reload();
+      onDelete(id);
       // Aquí podrías agregar lógica adicional, como actualizar el estado
     } catch (error) {
       console.error("Error eliminando el juego:", error);

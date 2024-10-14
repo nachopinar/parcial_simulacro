@@ -2,7 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {Card} from "./Components";
 
-const Home = ({juegos}) => { 
+const Home = ({juegos, setJuegos}) => { 
+   const handleDeleteJuego = (id) => {
+     setJuegos((prevJuegos) => prevJuegos.filter((juego) => juego.id !== id));
+   };
+
   return (
     <form>
       <h1>Simulacro Parcial</h1>
@@ -15,6 +19,7 @@ const Home = ({juegos}) => {
             description={juego.description}
             players={juego.players}
             categories={juego.categories}
+            onDelete={handleDeleteJuego}
           />
         ))}
       </div>
