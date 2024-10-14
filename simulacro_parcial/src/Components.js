@@ -8,7 +8,6 @@ export const Card = ({ id, title, description, players, categories }) => {
 
   const HandleDetailClick = (event) => {
     event.preventDefault();
-    // Aquí pasas el estado con la información del juego
     navigate(`/game/${id}`, {
       state: { title, description, players, categories },
     });
@@ -24,9 +23,8 @@ export const Card = ({ id, title, description, players, categories }) => {
 };
 
 export const GameDetail = () => {
-  const location = useLocation(); // Obtiene el objeto location
+  const location = useLocation(); 
 
-  // Asegúrate de que location.state no sea undefined
   if (!location.state) {
     return <div>No se encontraron detalles del juego.</div>;
   }
@@ -37,7 +35,7 @@ export const GameDetail = () => {
   return (
     <form>
       <h1>Detalle del juego: {title}</h1>
-      <div>
+      <div className = "GameDetail">
         <div>Descripción: {description}</div>
         <div>Jugadores: {players}</div>
         <div>Categorías: {categories}</div>

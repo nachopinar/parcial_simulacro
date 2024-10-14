@@ -9,12 +9,12 @@
 }
 
 
-.GameDetails {
-  background-color: #282c34;
+.GameDetail {
+  background-color: #3a5283;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(83, 134, 95, 0.2);
   color: white;
   margin: 10px;
   padding: 20px;
-  text-align: center;
+  text-align: left;
 }
