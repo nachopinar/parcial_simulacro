@@ -1,5 +1,6 @@
 import "./Components.css";
 import { useNavigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import { useLocation } from "react-router-dom"; 
 import { useParams } from "react-router-dom";   
 
@@ -23,6 +24,11 @@ export const Card = ({ id, title, description, players, categories }) => {
 };
 
 export const GameDetail = () => {
+  const navigate = useNavigate();
+  const HandleReturnClick = (event) => {
+    event.preventDefault();
+    navigate(`/home`);}
+
   const location = useLocation(); 
 
   if (!location.state) {
@@ -40,6 +46,7 @@ export const GameDetail = () => {
         <div>Jugadores: {players}</div>
         <div>Categorías: {categories}</div>
       </div>
+      <button onClick={HandleReturnClick}>Return Home</button>
     </form>
   );
 };
