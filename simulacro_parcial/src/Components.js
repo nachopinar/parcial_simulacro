@@ -6,6 +6,23 @@ import { useParams } from "react-router-dom";
 
 export const Card = ({ id, title, description, players, categories }) => {
   const navigate = useNavigate();
+  const HandleDeleteClick = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:3000/api/games/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+
+      console.log("Juego eliminado con éxito");
+      // Aquí podrías agregar lógica adicional, como actualizar el estado
+    } catch (error) {
+      console.error("Error eliminando el juego:", error);
+    }
+  };
 
   const HandleDetailClick = (event) => {
     event.preventDefault();
@@ -18,7 +35,7 @@ export const Card = ({ id, title, description, players, categories }) => {
     <div className="Card">
       <div>{title}</div>
       <button onClick={HandleDetailClick}>detalle</button>
-      <button>borrar</button>
+      <button onClick={HandleDeleteClick}>borrar</button>
     </div>
   );
 };
