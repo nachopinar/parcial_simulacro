@@ -26,7 +26,7 @@ export const Card = ({ id, title, description, players, categories }) => {
 
   const HandleDetailClick = (event) => {
     event.preventDefault();
-    navigate(`/game/${id}`, {
+    navigate(`/game/${title}`, {
       state: { title, description, players, categories },
     });
   };
