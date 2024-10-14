@@ -2,21 +2,16 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Card, GameDetail } from "./Components";
+import Home from "./Home";
 
-const Card = ({ id, title }) => {
-  return (
-    <div>
-      <div>{title}</div>
-      <div onClick={() => console.log(id)}>detalle</div>
-      <div>editar</div>
-    </div>
-  );
-};
+
 
 function App() {
   const [juegos, setJuegos] = useState([]);
 
-  const cargarJuegos = async (e) => {
+  const cargarJuegos = async () => {
     try {
       //Acá esperamos la respuesta del backend al hacerle un post con la información necesaria para crear el usuario
       const response = await fetch("http://localhost:3000/api/games", {
@@ -34,16 +29,15 @@ function App() {
     cargarJuegos();
   }, []);
 
-  return (
-    <form>
-      <h1>Simulacro Parcial</h1>
-      <div>
-        {juegos.map((juego) => (
-          <Card key={juego.id} id={juego.id} title={juego.title} />
-        ))}
-      </div>
-    </form>
-  );
+ return (
+   <Router>
+     <Routes>
+       <Route path="/" element={<Navigate to="/home" />} />
+       <Route path="/home" element={<Home juegos={juegos} />} />
+        <Route path="/game/:id" element={<GameDetail juegos={juegos}/>} />
+     </Routes>
+   </Router>
+ );
 }
 
 export default App;

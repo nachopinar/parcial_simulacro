@@ -1,0 +1,20 @@
+.Card {
+  background-color: #282c34;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.GameDetails {
+  background-color: #282c34;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
